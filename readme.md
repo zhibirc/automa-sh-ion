@@ -8,7 +8,7 @@
 
 ```shell script
 # execute
-for tool in "$(ls ./tools)"; do chmod u+x $tool; done
+for tool in tools/*; do chmod u+x $tool; done
 ```
 
 That's it. Now modify and use (or use unmodified) these tools as day-by-day helpers.
