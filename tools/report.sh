@@ -2,22 +2,22 @@
 # ------------------------------
 # Report about daily activities.
 # Author: me :)
+#
+# Specials:
+# TOGGL_API_TOKEN - see https://github.com/toggl/toggl_api_docs#api-token
+# TOGGL_WORKSPACE_ID - see https://github.com/toggl/toggl_api_docs/blob/master/chapters/workspaces.md
 # ------------------------------
 
-TOGGL_API_TOKEN='1234'
-TOGGL_API_URL='https://api.track.toggl.com/reports/api/v2/weekly'
+TOGGL_API_URL='https://api.track.toggl.com/reports/api/v2/summary'
+YESTERDAY="$(date --date='yesterday' +%F)"
+TODAY="$(date +%F)"
 
-if hash curl
-    then
-#        curl -v -u "$TOGGL_API_TOKEN:api_token" \
-#            -H "Content-Type: application/json" \
-#            -d '{"workspace_id": 1234, "project": "test", "user_agent": "api_test", "since": "2020-12-03", "until": "2020-12-04"}' \
-#            -X GET "$TOGGL_API_URL"
+url="$TOGGL_API_URL?workspace_id=$TOGGL_WORKSPACE_ID&since=$YESTERDAY&until=$TODAY&user_agent=api_test"
 
-        curl -v -u "$TOGGL_API_TOKEN:api_token" "$TOGGL_API_URL?workspace_id=1234&project=test&user_agent=api_test&since=2020-12-02&until=2020-12-04"
-    elif hash wget
-    then
-        wget "$TOGGL_API_URL"
+if hash curl; then
+        curl -v -u "$TOGGL_API_TOKEN:api_token" "$url"
+    elif hash wget; then
+        wget --user="$TOGGL_API_TOKEN" --password='api_token' "$url"
     else
         echo "curl/wget are absent, install one of them and try again"
 

@@ -13,6 +13,12 @@ for tool in tools/*; do chmod u+x $tool; done
 
 That's it. Now modify and use (or use unmodified) these tools as day-by-day helpers.
 
+There is also one important thing. Oftentimes in automation you're dealing with services/APIs which may have access tokens,
+common configuration data (URLs, ports etc.) or other reusable stuff. Entering it each time you run a script is tedious,
+so you can put them into the set of environment variables or use them inside the particular script.
+Each one that requires user-specific data has a list of suggested variables described in the topmost comment of this script.
+Now you and only you decide where and how do you prefer to initialize them.
+
 To speed up the search for the right tool, you can press **F3**/**Ctrl+F** in your viewer when you're on this page
 and type the _most relevant_ keyword. I hope that something will be found.
 
