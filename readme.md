@@ -22,7 +22,8 @@ Now you and only you decide where and how do you prefer to initialize them.
 To speed up the search for the right tool, you can press **F3**/**Ctrl+F** in your viewer when you're on this page
 and type the _most relevant_ keyword. I hope that something will be found.
 
-[ram](tools/monitor.ram.full.sh)~[ram](tools/monitor.ram.sh)~[report](tools/report.sh)~[backup](tools/backup.create.deploy.sh)~[git](tools/get.parent.branch.sh)
+[ram](tools/monitor.ram.full.sh)~[ram](tools/monitor.ram.sh)~[report](tools/report.sh)~[backup](tools/backup.create.deploy.sh)~[git](tools/get.parent.branch.sh)~
+[toggl](tools/report.sh)~[api](tools/report.sh)
 
 
 ## Contributing
