@@ -15,7 +15,7 @@ That's it. Now modify and use (or use unmodified) these tools as day-by-day help
 
 There is also one important thing. Oftentimes in automation you're dealing with services/APIs which may have access tokens,
 common configuration data (URLs, ports etc.) or other reusable stuff. Entering it each time you run a script is tedious,
-so you can put them into the set of environment variables or use them inside the particular script.
+so you can put them into the set of environment variables (e.g. `export VARIABLE=value`) or use them inside the particular script.
 Each one that requires user-specific data has a list of suggested variables described in the topmost comment of this script.
 Now you and only you decide where and how do you prefer to initialize them.
 
