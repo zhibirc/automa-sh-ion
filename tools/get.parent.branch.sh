@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # find the nearest parent branch of the current git branch
 git show-branch -a \

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # predefine some custom set to backup, use it if no arguments
 # exclude all that excluded in Git (looks for .gitignore)

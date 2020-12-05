@@ -13,6 +13,11 @@ for tool in tools/*; do chmod u+x $tool; done
 
 That's it. Now modify and use (or use unmodified) these tools as day-by-day helpers.
 
+To speed up the search for the right tool, you can press **F3**/**Ctrl+F** in your viewer when you're on this page
+and type the _most relevant_ keyword. I hope that something will be found.
+
+[ram](tools/monitor.ram.full.sh)~[ram](tools/monitor.ram.sh)~[report](tools/report.sh)~[backup](tools/backup.create.deploy.sh)~[git](tools/get.parent.branch.sh)
+
 
 ## Contributing
 

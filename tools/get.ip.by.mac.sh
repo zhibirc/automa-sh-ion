@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # use MAC address as an argument to find corresponding IP
 ip neighbor | grep "$@" | cut -d" " -f1
