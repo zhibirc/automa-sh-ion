@@ -1,6 +1,6 @@
 #!/bin/bash
 # ------------------------------
-# Report about daily activities.
+# Methods for working with JSON.
 # Author: me :)
 # ------------------------------
 
@@ -9,9 +9,9 @@ json_parse () {
 
     # jq - Command-line JSON processor
     if hash jq; then
-        return "$(jq -r ".$field")"
+        jq -r ".$field"
     elif hash python3; then
-        return "$(python3 -c "import json; print(json.load($data)[$field])")"
+        python3 -c "import json; print(json.load($data)[$field])"
     else
         echo 'There are no instruments to parse JSON format, install Python or jq, please'
 
