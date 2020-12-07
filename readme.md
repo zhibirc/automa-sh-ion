@@ -19,6 +19,18 @@ so you can put them into the set of environment variables (e.g. `export VARIABLE
 Each one that requires user-specific data has a list of suggested variables described in the topmost comment of this script.
 Now you and only you decide where and how do you prefer to initialize them.
 
+Sometimes you want to run task regularly to do some repetitive work (reporting, backups, monitoring etc.). This can be easily achieved with **cron**. In short:
+
+```shell script
+# if "cron" is not installed; use "yum" or another appropriate package manager for your GNU/Linux distro
+sudo apt update
+sudo apt install cron
+sudo systemctl enable cron
+
+# put "0 10 * * 1-5 report.sh" to send reports at 10 a.m. on every day-of-week from Monday through Friday
+crontab -e
+```
+
 To speed up the search for the right tool, you can press **F3**/**Ctrl+F** in your viewer when you're on this page
 and type the _most relevant_ keyword. I hope that something will be found.
 

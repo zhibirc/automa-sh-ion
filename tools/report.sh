@@ -23,25 +23,25 @@ TODAY="$(date +%F)"
 url="$TOGGL_API_URL?workspace_id=$TOGGL_WORKSPACE_ID&since=$YESTERDAY&until=$TODAY&user_agent=api_test"
 
 if hash curl; then
-        response=$(curl -s -u "$TOGGL_API_TOKEN:api_token" "$url")
-        data=$(echo "$response" | json_parse 'data[].items[].title.time_entry')
-    elif hash wget; then
-        response=$(wget --user="$TOGGL_API_TOKEN" --password='api_token' "$url")
-        data=$(echo "$response" | json_parse 'data[].items[].title.time_entry')
-    else
-        echo -e "${COLOR_RED}curl/wget are absent, install one of them and try again.${COLOR_RESET}"
+    response=$(curl -s -u "$TOGGL_API_TOKEN:api_token" "$url")
+elif hash wget; then
+    response=$(wget --user="$TOGGL_API_TOKEN" --password='api_token' "$url")
+else
+    echo -e "${COLOR_RED}curl/wget are absent, install one of them and try again.${COLOR_RESET}"
 
-        exit 1
+    exit 1
 fi
 
-# fixme: debug only
-#echo "$data"
+data=$(echo "$response" | json_parse 'data[].items[].title.time_entry')
+time=$(echo "$response" | json_parse 'total_grand')
+time=$(awk "BEGIN {printf \"%.2f\n\", $time/1000/60/60}")
 
 # specify your own message header text
-report_message="#yaroslav #stats\n\n$data"
+report_message="#yaroslav #stats\n\n$data\n\nTime (hours): $time"
 
 # see https://github.com/fabianonline/telegram.sh for details about tool used below
-echo -e "$report_message" | ../telegram.sh/telegram -t $TG_YSIR_BOT_TOKEN -c -452318342 -
+echo -e "$report_message" | ../telegram.sh/telegram -t $TG_YSIR_BOT_TOKEN -c $TG_YSIR_CHAT_ID -
 
 echo -e "${COLOR_GREEN}Report successfully created and send.${COLOR_RESET}"
+
 exit 0
