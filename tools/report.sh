@@ -48,7 +48,7 @@ time=$(awk "BEGIN {printf \"%.2f\n\", $time/1000/60/60}")
 report_message="#yaroslav #stats\n\n$data\n\nTime (hours): $time"
 
 # see https://github.com/fabianonline/telegram.sh for details about tool used below
-echo -e "$report_message" | "$HOME/$CLI_TOOLS_PATH/../telegram.sh/telegram" -t $TG_YSIR_BOT_TOKEN -c $TG_YSIR_CHAT_ID -M -
+echo -e "$report_message" | "$HOME/$CLI_TOOLS_PATH/../telegram.sh/telegram" -t "$TG_YSIR_BOT_TOKEN" -c "$TG_YSIR_CHAT_ID" -M -
 
 echo -e "${COLOR_GREEN}Report successfully created and send.${COLOR_RESET}"
 
