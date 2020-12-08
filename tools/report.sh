@@ -7,14 +7,21 @@
 # TOGGL_API_TOKEN - see https://github.com/toggl/toggl_api_docs#api-token
 # TOGGL_WORKSPACE_ID - see https://github.com/toggl/toggl_api_docs/blob/master/chapters/workspaces.md
 # TG_%abbreviated description%_BOT_TOKEN - Telegram Bot token (see https://core.telegram.org/bots#creating-a-new-bot)
+# To obtain the Group ID for below constant just use "curl "https://api.telegram.org/bot<bot_token>/getUpdates" after adding to chat and analyze the output.
 # TG_%abbreviated description from above%_CHAT_ID - Telegram Group/Chat ID
 # ------------------------------
 
-. ./libs/json.sh
+if [[ -f "$HOME/.config/automa-sh-ion/.config" ]]; then
+    # shellcheck disable=SC1090
+    . "$HOME/.config/automa-sh-ion/.config"
+else
+    echo -e "${COLOR_YELLOW}Configuration file is absent, create it or setup environment${COLOR_RESET}"
+fi
 
-COLOR_RED='\033[0;31m'
-COLOR_GREEN='\033[0;32m'
-COLOR_RESET='\033[0m'
+# shellcheck disable=SC1090
+. "$HOME/$CLI_TOOLS_PATH/libs/json.sh"
+# shellcheck disable=SC1090
+. "$HOME/$CLI_TOOLS_PATH/libs/colors.sh"
 
 TOGGL_API_URL='https://api.track.toggl.com/reports/api/v2/summary'
 YESTERDAY="$(date --date='yesterday' +%F)"
@@ -33,6 +40,7 @@ else
 fi
 
 data=$(echo "$response" | json_parse 'data[].items[].title.time_entry')
+data=$(echo "$data" | sed "s~[[:digit:]]\{5\}~[&]($TASK_TRACKER_URL&)~g")
 time=$(echo "$response" | json_parse 'total_grand')
 time=$(awk "BEGIN {printf \"%.2f\n\", $time/1000/60/60}")
 
@@ -40,7 +48,7 @@ time=$(awk "BEGIN {printf \"%.2f\n\", $time/1000/60/60}")
 report_message="#yaroslav #stats\n\n$data\n\nTime (hours): $time"
 
 # see https://github.com/fabianonline/telegram.sh for details about tool used below
-echo -e "$report_message" | ../telegram.sh/telegram -t $TG_YSIR_BOT_TOKEN -c $TG_YSIR_CHAT_ID -
+echo -e "$report_message" | "$HOME/$CLI_TOOLS_PATH/../telegram.sh/telegram" -t $TG_YSIR_BOT_TOKEN -c $TG_YSIR_CHAT_ID -M -
 
 echo -e "${COLOR_GREEN}Report successfully created and send.${COLOR_RESET}"
 
