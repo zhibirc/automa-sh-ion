@@ -29,26 +29,32 @@ else
 fi
 
 repos=()
-line_index=1
+line_index=0
 
 while read -r line; do
-    repos+=("$line_index")
     (( line_index++ ))
+    repos+=("$line_index")
     repos+=("$line")
     repos+=("off")
 done < <( echo "$response" | json_parse '[].ssh_url' )
 
-#printf "\nInitial Array\n"
-#printf '%s\n' "${options[@]}"
+#printf '%s\n' "${repos[@]}"
 
 # check if we have "dialog" (see https://linux.die.net/man/1/dialog)
 if hash dialog; then
-    cmd=(dialog --separate-output --checklist "Select repositories to clone into $(pwd):" 22 76 16)
+    cmd=(dialog --separate-output --checklist "Total: $line_index \nSelect repositories to clone into $(pwd):" 22 76 16)
     choices=$("${cmd[@]}" "${repos[@]}" 2>&1 >/dev/tty)
-    clear
 else
     echo "fallback to another realization"
 fi
+
+echo -e "$choices\n\n"
+printf '%s\n' "${repos[@]}"
+
+for index in $choices; do
+    echo "Index: $index"
+    echo ${repos[$index]}
+done
 
 echo -e "${COLOR_GREEN}All your repositories are successfully cloned.${COLOR_RESET}"
 
