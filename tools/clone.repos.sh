@@ -53,9 +53,14 @@ fi
 
 for index in $choices; do
     repo=${repos[$index*2 + $index-2]}
-    echo "$repo"
-    #git clone "$repo"
-    #cd && npm ci
+    repo_name=$(basename "$repo")
+    repo_name=${repo_name%.git}
+
+    #echo "$repo ::: $repo_name"
+
+    git clone "$repo"
+    cd "$repo" && npm ci
+    cd ..
 done
 
 echo -e "${COLOR_GREEN}All your repositories are successfully cloned.${COLOR_RESET}"
