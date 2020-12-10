@@ -48,12 +48,14 @@ else
     echo "fallback to another realization"
 fi
 
-echo -e "$choices\n\n"
-printf '%s\n' "${repos[@]}"
+#echo -e "$choices\n\n"
+#printf '%s\n' "${repos[@]}"
 
 for index in $choices; do
-    echo "Index: $index"
-    echo ${repos[$index]}
+    repo=${repos[$index*2 + $index-2]}
+    echo "$repo"
+    #git clone "$repo"
+    #cd && npm ci
 done
 
 echo -e "${COLOR_GREEN}All your repositories are successfully cloned.${COLOR_RESET}"
