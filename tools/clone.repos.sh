@@ -1,4 +1,14 @@
 #!/bin/bash
+# ------------------------------
+# Clone projects you need from GitHub.
+# Author: me :)
+#
+# Specials:
+# GITHUB_USERNAME - see https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/github-glossary#username
+# GITHUB_API_TOKEN - see:
+#     https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/github-glossary#access-token
+#     https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token
+# ------------------------------
 
 if [[ -f "$HOME/.config/automa-sh-ion/.config" ]]; then
     # shellcheck disable=SC1090
@@ -11,11 +21,12 @@ fi
 . "$HOME/$CLI_TOOLS_PATH/libs/json.sh"
 # shellcheck disable=SC1090
 . "$HOME/$CLI_TOOLS_PATH/libs/colors.sh"
+# shellcheck disable=SC1090
+. "$HOME/$CLI_TOOLS_PATH/libs/format.sh"
 
 # for the authenticated user only
 REPOS_URL="https://api.github.com/user/repos"
 
-#ssh_url
 if hash curl; then
     # it's possible to use "type=owner" query option here
     # TODO: also it's possible an issue when someone has more than 100 owned repos, so implement handling result pages
@@ -23,7 +34,7 @@ if hash curl; then
 elif hash wget; then
     response=$(wget --user="$GITHUB_USERNAME" --password="$GITHUB_API_TOKEN" --header="Accept: application/vnd.github.v3+json" "$REPOS_URL?visibility=all&affiliation=owner&per_page=100")
 else
-    echo "${COLOR_RED}curl/wget are absent, install one of them and try again${COLOR_RESET}"
+    echo -e "${COLOR_RED}curl/wget are absent, install one of them and try again${COLOR_RESET}"
 
     exit 1
 fi
@@ -38,25 +49,20 @@ while read -r line; do
     repos+=("off")
 done < <( echo "$response" | json_parse '[].ssh_url' )
 
-#printf '%s\n' "${repos[@]}"
-
 # check if we have "dialog" (see https://linux.die.net/man/1/dialog)
 if hash dialog; then
     cmd=(dialog --separate-output --checklist "Total: $line_index \nSelect repositories to clone into $(pwd):" 22 76 16)
     choices=$("${cmd[@]}" "${repos[@]}" 2>&1 >/dev/tty)
+    clear
 else
+    # TODO
     echo "fallback to another realization"
 fi
-
-#echo -e "$choices\n\n"
-#printf '%s\n' "${repos[@]}"
 
 for index in $choices; do
     repo=${repos[$index*2 + $index-2]}
     repo_name=$(basename "$repo")
     repo_name=${repo_name%.git}
-
-    #echo "$repo ::: $repo_name"
 
     git clone "$repo"
 
@@ -64,10 +70,12 @@ for index in $choices; do
         npm ci
         cd ..
     else
-        echo "${COLOR_RED}Fail to clone $repo_name${COLOR_RESET}"
+        echo -e "${COLOR_RED}Fail to clone $repo_name${COLOR_RESET}"
     fi
+
+    echo -e "\n${COLOR_GREEN}$(print_utf_characters 2B1D 40)${COLOR_RESET}\n"
 done
 
-echo "${COLOR_GREEN}All your repositories are successfully cloned.${COLOR_RESET}"
+echo -e "${COLOR_GREEN}Done.${COLOR_RESET}\a"
 
 exit 0
