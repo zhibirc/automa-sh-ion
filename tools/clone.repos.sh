@@ -23,7 +23,7 @@ if hash curl; then
 elif hash wget; then
     response=$(wget --user="$GITHUB_USERNAME" --password="$GITHUB_API_TOKEN" --header="Accept: application/vnd.github.v3+json" "$REPOS_URL?visibility=all&affiliation=owner&per_page=100")
 else
-    echo -e "${COLOR_RED}curl/wget are absent, install one of them and try again.${COLOR_RESET}"
+    echo "${COLOR_RED}curl/wget are absent, install one of them and try again${COLOR_RESET}"
 
     exit 1
 fi
@@ -59,10 +59,15 @@ for index in $choices; do
     #echo "$repo ::: $repo_name"
 
     git clone "$repo"
-    cd "$repo" && npm ci
-    cd ..
+
+    if cd "$repo_name"; then
+        npm ci
+        cd ..
+    else
+        echo "${COLOR_RED}Fail to clone $repo_name${COLOR_RESET}"
+    fi
 done
 
-echo -e "${COLOR_GREEN}All your repositories are successfully cloned.${COLOR_RESET}"
+echo "${COLOR_GREEN}All your repositories are successfully cloned.${COLOR_RESET}"
 
 exit 0
