@@ -1,5 +1,8 @@
 # automa-sh-ion
 
+_Oftentimes we have a lot of tedious day-by-day routine such as collecting working activity for reports, backup something to somewhere or similar stuff.
+Automation is a good start point to optimize your day!_
+
 ---
 [![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](license.md)
 [![Maintenance](https://img.shields.io/maintenance/yes/2020.svg?style=flat-square)]()
