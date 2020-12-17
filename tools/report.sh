@@ -6,7 +6,7 @@
 # Specials:
 # TOGGL_API_TOKEN - see https://github.com/toggl/toggl_api_docs#api-token
 # TOGGL_WORKSPACE_ID - see https://github.com/toggl/toggl_api_docs/blob/master/chapters/workspaces.md
-# TG_%abbreviated description%_BOT_TOKEN - Telegram Bot token (see https://core.telegram.org/bots#creating-a-new-bot)
+# TG_%abbreviated description%_BOT_TOKEN - Telegram Bot TOKEN (see https://core.telegram.org/bots#creating-a-new-bot)
 # To obtain the Group ID for below constant just use "curl "https://api.telegram.org/bot<bot_token>/getUpdates" after adding to chat and analyze the output.
 # TG_%abbreviated description from above%_CHAT_ID - Telegram Group/Chat ID
 # ------------------------------
