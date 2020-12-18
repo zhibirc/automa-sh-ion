@@ -15,5 +15,19 @@ else:
 
 bot = telebot.TeleBot(TOKEN, parse_mode=None)
 
+keyboard = telebot.types.ReplyKeyboardMarkup(True, True)
+
+keyboard.row('Get bookmarks')
+keyboard.row('Set bookmarks')
+keyboard.row('Take a vacation')
+keyboard.row('Help desk')
+
+
+@bot.message_handler(commands=['start'])
+def handle_message(message):
+    bot.send_message(message.chat.id, 'Started.', reply_markup=keyboard)
+
+
 if __name__ == '__main__':
     print('Bot is listening...')
+    bot.polling()
