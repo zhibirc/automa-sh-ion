@@ -1,5 +1,4 @@
 import os
-import sys
 import re
 import telebot
 
@@ -23,9 +22,14 @@ keyboard.row('Take a vacation')
 keyboard.row('Help desk')
 
 
-@bot.message_handler(commands=['start'])
+@bot.message_handler(commands=['start', 'help'])
 def handle_message(message):
     bot.send_message(message.chat.id, 'Started.', reply_markup=keyboard)
+
+
+@bot.message_handler(func=lambda message: True)
+def echo_all(message):
+    bot.reply_to(message, message.text)
 
 
 if __name__ == '__main__':
