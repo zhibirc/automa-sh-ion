@@ -1,37 +1,46 @@
 import os
 import re
+import logging
 import telebot
+from pymongo import MongoClient
+
+mongoClient = MongoClient()
+db = mongoClient.test
+
+logger = telebot.logger
+logger.setLevel(logging.DEBUG)
 
 configFilePath = f'{os.getenv("HOME")}/.config/automa-sh-ion/.config'
 TOKEN = ''
 
 if os.path.isfile(configFilePath):
-    TOKEN = os.system(f'cmd=". \"{configFilePath}\" && echo \"$TG_YSIR_BOT_TOKEN\""; /bin/bash -c "$cmd"')
-    print(TOKEN)
+    fileHandler = open(configFilePath, 'r')
+
+    for line in fileHandler.readlines():
+        line = line.split('=')
+
+        if line[0] == 'TG_YSIR_BOT_TOKEN':
+            TOKEN = line[1].replace('"', '').strip()
+
+    fileHandler.close()
 else:
     print('Configuration file is absent, create it or setup environment')
+    quit(1)
 
 
 bot = telebot.TeleBot(TOKEN, parse_mode=None)
 
-keyboard = telebot.types.ReplyKeyboardMarkup(True, True)
+keyboard = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
 
-keyboard.row('Get bookmarks')
-keyboard.row('Set bookmarks')
-keyboard.row('Take a vacation')
-keyboard.row('Help desk')
+keyboard.row('🔖', '📊')
+keyboard.row('🌄', '🆘')
 
 
-@bot.message_handler(commands=['start', 'help'])
+@bot.message_handler(commands=['start'])
 def handle_message(message):
     bot.send_message(message.chat.id, 'Started.', reply_markup=keyboard)
 
 
-@bot.message_handler(func=lambda message: True)
-def echo_all(message):
-    bot.reply_to(message, message.text)
-
-
 if __name__ == '__main__':
     print('Bot is listening...')
-    bot.polling()
+    bot.polling(none_stop=True)
