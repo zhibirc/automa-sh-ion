@@ -5,6 +5,7 @@
 # Author: me :)
 #
 # Zero-config, use only CLI arguments.
+# Usage: CMD http://username:@example.com/ [http://:password@domain.com/ [http://domain.com/]]
 # ------------------------------
 
 # shellcheck disable=SC1090
@@ -12,7 +13,7 @@
 
 if [[ $# -eq 0 ]]; then
     echo -e "${COLOR_RED}Invalid call syntax${COLOR_RESET}"
-    echo 'Usage: CMD http://username:@example.com/ http://:password@domain.com/ http://domain.com/'
+    echo 'Usage: CMD http://username:@example.com/ [http://:password@domain.com/ [http://domain.com/]]'
 
     exit 1
 fi
