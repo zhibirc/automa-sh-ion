@@ -14,7 +14,10 @@ if [[ -f "$HOME/.config/automa-sh-ion/.config" ]]; then
     # shellcheck disable=SC1090
     . "$HOME/.config/automa-sh-ion/.config"
 else
+    # shellcheck disable=SC1090
+    . "$(pwd)/tools/libs/colors.sh"
     echo -e "${COLOR_YELLOW}Configuration file is absent, create it or setup environment${COLOR_RESET}"
+    exit 1
 fi
 
 # shellcheck disable=SC1090
