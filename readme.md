@@ -9,9 +9,13 @@ Automation is a good start point to optimize your day!_
 [![Platform](https://img.shields.io/badge/OS-GNU%2FLinux-yellowgreen.svg?style=flat-square)]()
 ---
 
+## Setup
+
 ```shell script
 # execute
 for tool in tools/*; do chmod u+x $tool; done
+# run the following command to install dependencies for Python scripts
+pip install -r requirements.txt
 ```
 
 That's it. Now modify and use (or use unmodified) these tools as day-by-day helpers.
