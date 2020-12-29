@@ -28,17 +28,24 @@ fi
 . "$HOME/Work/Projects/Pets/automa-sh-ion/tools/light.brute/strategies.sh"
 # . "$HOME/$CLI_TOOLS_PATH/light.brute/strategies.sh"
 
-generate_random 45
-
-exit 1
-VERSION='0.0.1'
+VERSION='v0.0.1'
 HELP='Usage: CMD username:@http://example.com/ [:password@https://domain.com/ [www.domain.com/path]]'
+
+clear
 
 if [[ $# -eq 0 ]]; then
     echo -e "${COLOR_RED}Invalid call syntax!${COLOR_RESET}"
     echo "$HELP"
 
     exit 1
+elif [[ "$1" == '-h' || "$1" == '--help' ]]; then
+    echo "$HELP"
+
+    exit 0
+elif [[ "$1" == '-v' || "$1" == '--version' ]]; then
+    echo "$VERSION"
+
+    exit 0
 fi
 
 PS3='Select a test strategy from the list above: '
@@ -52,12 +59,16 @@ do
             echo 'Select a characters amount of generated string:'
 
             read -r random_length
+
+            generate_random "$random_length"
             ;;
         'Cookie')
             echo 'Cookie'
             ;;
         'Scan')
-            echo 'Scan'
+            echo -e "\n${COLOR_GREEN}############################## Running Port Scan ##############################${COLOR_RESET}\n"
+            scan
+            echo -e "\n${COLOR_GREEN}############################## Port Scan Finished ##############################${COLOR_RESET}\n"
             ;;
         'Quit')
             break
@@ -65,8 +76,6 @@ do
         *) echo "invalid option $REPLY";;
     esac
 done
-
-exit 0
 
 if sudo apt-get update && sudo apt-get install -y nmap hydra; then
     echo -e "${COLOR_GREEN}Required installations done!${COLOR_RESET}"
