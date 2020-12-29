@@ -7,7 +7,7 @@
 # Zero-config, use only CLI arguments.
 #
 # USAGE:
-# CMD username:@http://example.com/ [:password@https://domain.com/ [www.domain.com/path]]
+# CMD username:@http://example.com/
 #
 # NOTES:
 # https://crackstation.net/crackstation-wordlist-password-cracking-dictionary.htm
@@ -28,54 +28,44 @@ fi
 . "$HOME/Work/Projects/Pets/automa-sh-ion/tools/light.brute/strategies.sh"
 # . "$HOME/$CLI_TOOLS_PATH/light.brute/strategies.sh"
 
-VERSION='v0.0.1'
-HELP='Usage: CMD username:@http://example.com/ [:password@https://domain.com/ [www.domain.com/path]]'
-
-clear
+declare VERSION='v0.0.1'
+declare HELP='Usage: CMD username:@http://example.com/'
+declare DEBUG=false
 
 if [[ $# -eq 0 ]]; then
     echo -e "${COLOR_RED}Invalid call syntax!${COLOR_RESET}"
     echo "$HELP"
 
     exit 1
-elif [[ "$1" == '-h' || "$1" == '--help' ]]; then
-    echo "$HELP"
-
-    exit 0
-elif [[ "$1" == '-v' || "$1" == '--version' ]]; then
-    echo "$VERSION"
-
-    exit 0
 fi
 
-PS3='Select a test strategy from the list above: '
 
-options=('Random' 'Cookie' 'Scan' 'Quit')
+function debug () {
+    if [[ $DEBUG = true ]]; then
+        echo ""
+        declare -p "$1"
+        echo ""
+    fi
+}
 
-select option in "${options[@]}"
-do
-    case $option in
-        'Random')
-            echo 'Select a characters amount of generated string:'
 
-            read -r random_length
+clear
 
-            generate_random "$random_length"
-            ;;
-        'Cookie')
-            echo 'Cookie'
-            ;;
-        'Scan')
-            echo -e "\n${COLOR_GREEN}############################## Running Port Scan ##############################${COLOR_RESET}\n"
-            scan
-            echo -e "\n${COLOR_GREEN}############################## Port Scan Finished ##############################${COLOR_RESET}\n"
-            ;;
-        'Quit')
-            break
-            ;;
-        *) echo "invalid option $REPLY";;
-    esac
-done
+case $1 in
+    -h|--help)
+        echo "$HELP"
+
+        exit 0
+        ;;
+    -V|--version)
+        echo "$VERSION"
+
+        exit 0
+        ;;
+    -d)
+        DEBUG=true
+        ;;
+esac
 
 if sudo apt-get update && sudo apt-get install -y nmap hydra; then
     echo -e "${COLOR_GREEN}Required installations done!${COLOR_RESET}"
@@ -84,6 +74,35 @@ else
 
     exit 1
 fi
+
+PS3='Select a test strategy from the list above: '
+
+options=('HTTP response code based' 'Cookie based' 'Scan' 'Quit')
+
+select option in "${options[@]}"; do
+    case $option in
+        'HTTP response code based')
+            read -r -p 'Select a characters amount of generated string: ' random_length
+
+            generate_random "$random_length"
+            break
+            ;;
+        'Cookie based')
+            echo 'Cookie based'
+            break
+            ;;
+        'Scan')
+            echo -e "\n${COLOR_GREEN}############################## Running Port Scan ##############################${COLOR_RESET}\n"
+            scan
+            echo -e "\n${COLOR_GREEN}############################## Port Scan Finished ##############################${COLOR_RESET}\n"
+            break
+            ;;
+        'Quit')
+            break
+            ;;
+        *) echo "invalid option $REPLY";;
+    esac
+done
 
 declare -r targets=("$@")
 declare -A targets_map

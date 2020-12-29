@@ -15,14 +15,26 @@ declare -a PORT_SCAN_LIST=(21 22 23 25 53 80 110 139 162 389 443 445 512 513 514
 
 
 function generate_random () {
-    length=${1:=$MIN_RANDOM_LENGTH}
+    local length=${1:=$MIN_RANDOM_LENGTH}
 
     tr -dc a-z0-9 < /dev/urandom | head -c "$length" | xargs
 }
 
 
+function auth () {
+    #local
+}
+
+
+function bump_into_walls () {
+    while read token; do
+	    auth "$token"
+    done < "./$1"
+}
+
+
 function scan () {
-    target=$1
+    local target=$1
     #threads=${2:=$PORT_SCAN_THREADS}
 
     nmap -T4 -A -v -Pn --open "$target" -p "${PORT_SCAN_LIST[@]}" -oN ./logs/scan.txt
