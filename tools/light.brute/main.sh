@@ -3,7 +3,6 @@
 # ABOUT:
 # Lightweight brute-force for access to not-so-important inner services.
 # Oftentimes it's much faster than asking and useless waiting for dumb password for required service.
-# Author: me :)
 #
 # Zero-config, use only CLI arguments.
 #
@@ -12,19 +11,26 @@
 #
 # NOTES:
 # https://crackstation.net/crackstation-wordlist-password-cracking-dictionary.htm
+#
+# AUTHOR:
+# @zhibirc
 # ------------------------------
 
 if [[ -f "$HOME/.config/automa-sh-ion/.config" ]]; then
     # shellcheck disable=SC1090
     . "$HOME/.config/automa-sh-ion/.config"
-else
-    HOME=$(pwd)
-    CLI_TOOLS_PATH='tools'
 fi
 
 # shellcheck disable=SC1090
 . "$HOME/$CLI_TOOLS_PATH/libs/colors.sh"
+# shellcheck disable=SC1090
+# TODO: remove after development
+. "$HOME/Work/Projects/Pets/automa-sh-ion/tools/light.brute/strategies.sh"
+# . "$HOME/$CLI_TOOLS_PATH/light.brute/strategies.sh"
 
+generate_random 45
+
+exit 1
 VERSION='0.0.1'
 HELP='Usage: CMD username:@http://example.com/ [:password@https://domain.com/ [www.domain.com/path]]'
 
@@ -34,6 +40,33 @@ if [[ $# -eq 0 ]]; then
 
     exit 1
 fi
+
+PS3='Select a test strategy from the list above: '
+
+options=('Random' 'Cookie' 'Scan' 'Quit')
+
+select option in "${options[@]}"
+do
+    case $option in
+        'Random')
+            echo 'Select a characters amount of generated string:'
+
+            read -r random_length
+            ;;
+        'Cookie')
+            echo 'Cookie'
+            ;;
+        'Scan')
+            echo 'Scan'
+            ;;
+        'Quit')
+            break
+            ;;
+        *) echo "invalid option $REPLY";;
+    esac
+done
+
+exit 0
 
 if sudo apt-get update && sudo apt-get install -y nmap hydra; then
     echo -e "${COLOR_GREEN}Required installations done!${COLOR_RESET}"
@@ -58,12 +91,6 @@ for target in "${targets[@]}"; do
         targets_map["$target"]=''
     fi
 done
-
-function generate () {
-    echo pass
-
-    return 0
-}
 
 for target in "${!targets_map[@]}"; do
     url=$target
