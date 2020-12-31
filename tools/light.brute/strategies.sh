@@ -27,8 +27,17 @@ function auth () {
 
 
 function bump_into_walls () {
+    local -i count=1
+
     while read token; do
 	    auth "$token"
+	    sleep 1
+    done < "./$1"
+
+    while IFS="" read -r token; do
+        auth "$token"
+        sleep 1
+        (( ++count ))
     done < "./$1"
 }
 

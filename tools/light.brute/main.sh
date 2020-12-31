@@ -32,6 +32,21 @@ declare VERSION='v0.0.1'
 declare HELP='Usage: CMD username:@http://example.com/'
 declare DEBUG=false
 
+declare -a packages_to_install
+declare wordlist_path
+
+#usage(){
+#cat <<EOF
+#<description>
+#-h, --help
+#        Show this help message
+#-f, --file FILE
+#        Custom path to wordlist
+#EOF
+#    exit 1
+#}
+# [ $# -eq 0 ] && usage
+
 if [[ $# -eq 0 ]]; then
     echo -e "${COLOR_RED}Invalid call syntax!${COLOR_RESET}"
     echo "$HELP"
@@ -67,31 +82,55 @@ case $1 in
         ;;
 esac
 
-if sudo apt-get update && sudo apt-get install -y nmap hydra; then
-    echo -e "${COLOR_GREEN}Required installations done!${COLOR_RESET}"
-else
-    echo -e "${COLOR_RED}Required installations failed!${COLOR_RESET}"
+for dependency in nmap hydra; do
+    if ! command -v "$dependency" >/dev/null 2>&1; then
+        read -r -p "$(echo -e "${COLOR_YELLOW}Could not find \"$dependency\", install it? [Y/n]${COLOR_RESET}")" decision
 
-    exit 1
+        if [[ -z "$decision" || "$decision" == 'Y' ]]; then
+            packages_to_install+=("$dependency")
+        else
+            echo -e "${COLOR_RED}Without \"$dependency\" some functionality will be unavailable${COLOR_RESET}"
+        fi
+    fi
+done
+
+if [[ "${#packages_to_install[@]}" -gt 0 ]]; then
+    sudo apt-get update
+    sudo apt install -y "${packages_to_install[@]}"
 fi
 
-PS3='Select a test strategy from the list above: '
+PS3='What do you want to do? '
 
-options=('HTTP response code based' 'Cookie based' 'Scan' 'Quit')
+options=(
+    'Authorize based on HTTP response code'
+    'Authorize based on cookies/session'
+    'Authorize based on raw generated tokens'
+    'Scan for open/unsecure ports and services'
+    'Quit'
+)
 
 select option in "${options[@]}"; do
     case $option in
-        'HTTP response code based')
-            read -r -p 'Select a characters amount of generated string: ' random_length
-
-            generate_random "$random_length"
+        'Authorize based on HTTP response code')
+            read -r -p 'Use default wordlist (hit ENTER) or specify path to your own: ' wordlist_path
+            if [[ -z "$wordlist_path" ]]; then
+                wordlist_path='rockyou.txt'
+                echo -e "${COLOR_GREEN}Downloading $wordlist_path from the Web...${COLOR_RESET}"
+                curl -L -s "https://github.com/brannondorsey/naive-hashcat/releases/download/data/$wordlist_path" -o $wordlist_path
+                echo -e "Lines: $(wc -l $wordlist_path | awk '{print $1}')"
+            fi
             break
             ;;
-        'Cookie based')
+        'Authorize based on cookies/session')
             echo 'Cookie based'
             break
             ;;
-        'Scan')
+        'Authorize based on raw generated tokens')
+            read -r -p 'Select a characters amount of generated string: ' random_length
+            generate_random "$random_length"
+            break
+            ;;
+        'Scan for open/unsecure ports and services')
             echo -e "\n${COLOR_GREEN}############################## Running Port Scan ##############################${COLOR_RESET}\n"
             scan
             echo -e "\n${COLOR_GREEN}############################## Port Scan Finished ##############################${COLOR_RESET}\n"
