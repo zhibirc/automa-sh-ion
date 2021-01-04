@@ -6,7 +6,7 @@ Automation is a good start point to optimize your day!_
 ---
 <a href="https://www.gnu.org/software/bash/" target="_blank"><img src="https://img.shields.io/badge/Lang-Bash%204.4+-blue.svg"></a>
 [![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](license.md)
-[![Maintenance](https://img.shields.io/maintenance/yes/2020.svg?style=flat-square)]()
+[![Maintenance](https://img.shields.io/maintenance/yes/2021.svg?style=flat-square)]()
 [![Platform](https://img.shields.io/badge/OS-GNU%2FLinux-yellowgreen.svg?style=flat-square)]()
 [![HitCount](https://hits.dwyl.com/zhibirc/automa-sh-ion.svg)](https://hits.dwyl.com/zhibirc/automa-sh-ion)
 ---
@@ -44,7 +44,8 @@ To speed up the search for the right tool, you can press **F3**/**Ctrl+F** in yo
 and type the _most relevant_ keyword. I hope that something will be found.
 
 [ram](tools/monitor.ram.full.sh) | [ram](tools/monitor.ram.sh) | [report](tools/report.sh) | [backup](tools/backup.create.deploy.sh) | [git](tools/get.parent.branch.sh) |
-[toggl](tools/report.sh) | [api](tools/report.sh)
+[git](tools/clone.repos.sh) | [toggl](tools/report.sh) | [api](tools/report.sh) | [telegram-bot](templates/telegram.bot.py) | [workflow](tools/start.sh) |
+[github](tools/clone.repos.sh) | [github-api](tools/clone.repos.sh) | [web-security](tools/light.brute) | [brute-force](tools/light.brute)
 
 
 ## Contributing
