@@ -36,11 +36,13 @@ declare wordlist_path
 
 
 help () {
+    command_name=$(basename "$0")
+
     cat <<EOF
 Usage examples:
-CMD http://example.com/
-CMD %username%:@http://example.com/
-CMD :%password%@http://example.com/
+$command_name http://example.com/
+$command_name %username%:@http://example.com/
+$command_name :%password%@http://example.com/
 
 -h, --help
 Print this Help and exit.
@@ -48,6 +50,7 @@ Print this Help and exit.
 Print software version and exit.
 -d, --debug
 Enable debugging mode with a lot of execution details.
+
 EOF
 }
 
