@@ -28,34 +28,31 @@ fi
 . "$HOME/Work/Projects/Pets/automa-sh-ion/tools/light.brute/strategies.sh"
 # . "$HOME/$CLI_TOOLS_PATH/light.brute/strategies.sh"
 
-declare VERSION='v0.0.1'
-declare HELP='Usage: CMD username:@http://example.com/'
+declare -r VERSION='v0.0.1'
 declare DEBUG=false
 
 declare -a packages_to_install
 declare wordlist_path
 
-#usage(){
-#cat <<EOF
-#<description>
-#-h, --help
-#        Show this help message
-#-f, --file FILE
-#        Custom path to wordlist
-#EOF
-#    exit 1
-#}
-# [ $# -eq 0 ] && usage
 
-if [[ $# -eq 0 ]]; then
-    echo -e "${COLOR_RED}Invalid call syntax!${COLOR_RESET}"
-    echo "$HELP"
+help () {
+    cat <<EOF
+Usage examples:
+CMD http://example.com/
+CMD %username%:@http://example.com/
+CMD :%password%@http://example.com/
 
-    exit 1
-fi
+-h, --help
+Print this Help and exit.
+-V, --version
+Print software version and exit.
+-d, --debug
+Enable debugging mode with a lot of execution details.
+EOF
+}
 
 
-function debug () {
+debug () {
     if [[ $DEBUG = true ]]; then
         echo ""
         declare -p "$1"
@@ -64,11 +61,17 @@ function debug () {
 }
 
 
-clear
+if [[ $# -eq 0 ]]; then
+    echo -e "${COLOR_RED}Invalid call syntax!${COLOR_RESET}\n\a"
+    help
+
+    exit 1
+fi
+
 
 case $1 in
     -h|--help)
-        echo "$HELP"
+        help
 
         exit 0
         ;;
@@ -77,10 +80,13 @@ case $1 in
 
         exit 0
         ;;
-    -d)
+    -d|--debug)
         DEBUG=true
+        set -e -v -x
         ;;
 esac
+
+clear
 
 for dependency in nmap hydra; do
     if ! command -v "$dependency" >/dev/null 2>&1; then
