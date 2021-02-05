@@ -47,6 +47,7 @@ and type the _most relevant_ keyword. I hope that something will be found.
 [ram](tools/monitor.ram.full.sh) | [ram](tools/monitor.ram.sh) | [report](tools/report.sh) | [backup](tools/backup.create.deploy.sh) | [git](tools/get.parent.branch.sh) |
 [git](tools/clone.repos.sh) | [toggl](tools/report.sh) | [api](tools/report.sh) | [telegram-bot](templates/telegram.bot.py) | [workflow](tools/start.sh) |
 [github](tools/clone.repos.sh) | [github-api](tools/clone.repos.sh) | [web-security](tools/light.brute) | [brute-force](tools/light.brute) | [sms](tools/hack.alarm.sh) |
+[scale](tools/scaler.sh) | [resize](tools/scaler.sh) | [ImageMagick](tools/scaler.sh) |
 
 
 ## Contributing

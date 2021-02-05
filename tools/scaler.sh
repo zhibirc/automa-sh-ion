@@ -8,6 +8,8 @@
 set -o xtrace
 
 # load required libraries
+# shellcheck disable=SC1090
+. "$(pwd)/tools/libs/colors.sh"
 
 # firstly parse given options
 
