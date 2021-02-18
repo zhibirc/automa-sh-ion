@@ -1,5 +1,10 @@
-#!/bin/bash
+#!/bin/bash -e
+# ------------------------------
+# Send Telegram report with given chat ID and message.
+# Author: me :)
+# ------------------------------
 
+# for debug
 set -o xtrace
 
 declare telegram_bot_path="$1"
