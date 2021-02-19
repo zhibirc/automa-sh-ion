@@ -17,7 +17,7 @@ declare -a PORT_SCAN_LIST=(21 22 23 25 53 80 110 139 162 389 443 445 512 513 514
 function generate_random () {
     local length=${1:=$MIN_RANDOM_LENGTH}
 
-    tr -dc a-z0-9 < /dev/urandom | head -c "$length" | xargs
+    tr -dc a-z0-9 < /dev/urandom | head -c "$length" | xargs --max-procs 0 -L 1 # will run as many processes as possible at a time
 }
 
 
