@@ -11,7 +11,7 @@ if [[ -z "$*" ]]; then
     exit 1
 fi
 
-declare results
+declare -a results
 
 test () {
     ping -c 1 "$1" &> /dev/null

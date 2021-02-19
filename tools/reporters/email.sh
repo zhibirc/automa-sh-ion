@@ -6,3 +6,12 @@
 
 # for debug
 set -o xtrace
+
+readonly subject="Report from $(hostname)"
+
+declare email="$1"
+declare message="$2"
+
+echo "$message" | mail -s "$subject" "$email"
+
+exit $?

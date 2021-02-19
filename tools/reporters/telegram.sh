@@ -8,7 +8,7 @@
 set -o xtrace
 
 declare telegram_bot_path="$1"
-declare chat_id="$2"
+declare -i chat_id="$2"
 declare telegram_bot_token="$3"
 declare message="$4"
 
