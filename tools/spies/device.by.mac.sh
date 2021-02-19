@@ -7,7 +7,15 @@
 # for debug
 set -o xtrace
 
-# use MAC address as an argument to find corresponding IP
-ip neighbor | grep "$@" | cut -d" " -f1
+if [[ -z "$*" ]]; then
+    exit 1
+fi
+
+for mac in "$@"; do
+    # use MAC address as an argument to find corresponding IP
+    ip neighbor | grep "$mac" | cut -d" " -f1
+done
+
+exit $?
 
 
