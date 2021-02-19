@@ -47,7 +47,11 @@ and type the _most relevant_ keyword. I hope that something will be found.
 [ram](tools/monitor.ram.full.sh) | [ram](tools/monitor.ram.sh) | [report](tools/report.sh) | [backup](tools/backup.create.deploy.sh) | [git](tools/get.parent.branch.sh) |
 [git](tools/clone.repos.sh) | [toggl](tools/report.sh) | [api](tools/report.sh) | [telegram-bot](templates/telegram.bot.py) | [workflow](tools/start.sh) |
 [github](tools/clone.repos.sh) | [github-api](tools/clone.repos.sh) | [web-security](tools/light.brute) | [brute-force](tools/light.brute) | [sms](tools/hack.alarm.sh) |
-[scale](tools/scaler.sh) | [resize](tools/scaler.sh) | [ImageMagick](tools/scaler.sh) |
+[scale](tools/scaler.sh) | [resize](tools/scaler.sh) | [ImageMagick](tools/scaler.sh) | [find](tools/finder.sh) | [MAC](tools/spies/device.by.mac.sh) |
+[scan](tools/spies/device.by.mac.sh) |
+
+
+## Short Cheatsheet [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)]()
 
 
 ## Contributing
