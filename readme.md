@@ -12,6 +12,20 @@ Automation is a good start point to optimize your day!_
 [![HitCount](https://hits.dwyl.com/zhibirc/automa-sh-ion.svg)](https://hits.dwyl.com/zhibirc/automa-sh-ion)
 ---
 
+## Table of contents
+
+- **templates**: not ready-to-use instruments, but structural or implementation examples of some kind
+  - [bot](templates/telegram.bot.py): Telegram Bot common implementation which use [pyTelegramBotAPI](https://pypi.org/project/pyTelegramBotAPI/)
+  - [config](templates/config.sh): global config for sharing special information among included tools
+
+- **tools**: actually, the working utilities
+  - **libs**: shared service libraries
+    - [check.link](tools/libs/check.link.sh): check network connection status
+    - [format](tools/libs/format.sh): independent text formatting methods
+    - [json](tools/libs/json.sh): working with JSON format
+    - [styles](tools/libs/styles.sh): different visual styles for prettifying terminal stdout
+
+
 ## Setup
 
 ```shell script
@@ -22,6 +36,7 @@ pip install -r requirements.txt
 ```
 
 That's it. Now modify and use (or use unmodified) these tools as day-by-day helpers.
+Also, I hope, there will be convenient [installer](install.sh) soon. :turtle:
 
 There is also one important thing. Oftentimes in automation you're dealing with services/APIs which may have access tokens,
 common configuration data (URLs, ports etc.) or other reusable stuff. Entering it each time you run a script is tedious,
