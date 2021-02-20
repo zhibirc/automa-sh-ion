@@ -25,8 +25,8 @@ fi
 . "$HOME/$CLI_TOOLS_PATH/libs/colors.sh"
 # shellcheck disable=SC1090
 # TODO: remove after development
-. "$HOME/Work/Projects/Pets/automa-sh-ion/tools/light.brute/strategies.sh"
-# . "$HOME/$CLI_TOOLS_PATH/light.brute/strategies.sh"
+. "$HOME/Work/Projects/Pets/automa-sh-ion/tools/breakx/strategies.sh"
+# . "$HOME/$CLI_TOOLS_PATH/breakx/strategies.sh"
 
 declare -r VERSION='v0.0.1'
 declare DEBUG=false

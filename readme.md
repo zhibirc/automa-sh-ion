@@ -24,6 +24,11 @@ Automation is a good start point to optimize your day!_
     - [format](tools/libs/format.sh): independent text formatting methods
     - [json](tools/libs/json.sh): working with JSON format
     - [styles](tools/libs/styles.sh): different visual styles for prettifying terminal stdout
+  - **breakx**: toolset for resources analyzing
+  - **reporters**: send information via specific gateway
+    - [email](tools/reporters/email.sh): by e-mail
+    - [sms](tools/reporters/sms.sh): by SMS
+    - [telegram](tools/reporters/telegram.sh): by Telegram
 
 
 ## Setup
@@ -61,7 +66,7 @@ and type the _most relevant_ keyword. I hope that something will be found.
 
 [ram](tools/monitor.ram.full.sh) | [ram](tools/monitor.ram.sh) | [report](tools/report.sh) | [backup](tools/backup.create.deploy.sh) | [git](tools/get.parent.branch.sh) |
 [git](tools/clone.repos.sh) | [toggl](tools/report.sh) | [api](tools/report.sh) | [telegram-bot](templates/telegram.bot.py) | [workflow](tools/start.sh) |
-[github](tools/clone.repos.sh) | [github-api](tools/clone.repos.sh) | [web-security](tools/light.brute) | [brute-force](tools/light.brute) | [sms](tools/hack.alarm.sh) |
+[github](tools/clone.repos.sh) | [github-api](tools/clone.repos.sh) | [web-security](tools/breakx) | [brute-force](tools/breakx) | [sms](tools/hack.alarm.sh) |
 [scale](tools/scaler.sh) | [resize](tools/scaler.sh) | [ImageMagick](tools/scaler.sh) | [find](tools/finder.sh) | [MAC](tools/spies/device.by.mac.sh) |
 [scan](tools/spies/device.by.mac.sh) |
 
