@@ -30,6 +30,9 @@ Automation is a good start point to optimize your day!_
     - [email](tools/reporters/email.sh): by e-mail
     - [sms](tools/reporters/sms.sh): by SMS
     - [telegram](tools/reporters/telegram.sh): by Telegram
+  - **spies**: special atomic tools to detect something
+    - [device.by.mac](tools/spies/device.by.mac.sh): find a network device by given MAC address
+  - [backup](tools/backup.sh): backup + encrypt -> safe place = relief :relaxed:
 
 
 ## Setup
