@@ -1,74 +1,83 @@
-#!/bin/bash
+#!/bin/bash -e
+# ------------------------------
+# Basic TTY colors and styles.
+# ------------------------------
+
+# mark all for export to the environment of subshells
+set -o allexport
 
 # style reset
 STYLE_RESET='\033[0m'
 
 # regular colors
-COLOR_BLACK='\033[0;30m'
-COLOR_WHITE='\033[0;37m'
-COLOR_RED='\033[0;31m'
-COLOR_GREEN='\033[0;32m'
-COLOR_BLUE='\033[0;34m'
-COLOR_YELLOW='\033[0;33m'
-COLOR_PURPLE='\033[0;35m'
-COLOR_CYAN='\033[0;36m'
+BLACK='\033[0;30m'
+WHITE='\033[0;37m'
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+YELLOW='\033[0;33m'
+PURPLE='\033[0;35m'
+CYAN='\033[0;36m'
 
-# Bold
-BBlack='\033[1;30m'       # Black
-BRed='\033[1;31m'         # Red
-BGreen='\033[1;32m'       # Green
-BYellow='\033[1;33m'      # Yellow
-BBlue='\033[1;34m'        # Blue
-BPurple='\033[1;35m'      # Purple
-BCyan='\033[1;36m'        # Cyan
-BWhite='\033[1;37m'       # White
+# bold style for regular colors
+BOLD_BLACK='\033[1;30m'
+BOLD_WHITE='\033[1;37m'
+BOLD_RED='\033[1;31m'
+BOLD_GREEN='\033[1;32m'
+BOLD_BLUE='\033[1;34m'
+BOLD_YELLOW='\033[1;33m'
+BOLD_PURPLE='\033[1;35m'
+BOLD_CYAN='\033[1;36m'
 
-# Underline
-UBlack='\033[4;30m'       # Black
-URed='\033[4;31m'         # Red
-UGreen='\033[4;32m'       # Green
-UYellow='\033[4;33m'      # Yellow
-UBlue='\033[4;34m'        # Blue
-UPurple='\033[4;35m'      # Purple
-UCyan='\033[4;36m'        # Cyan
-UWhite='\033[4;37m'       # White
+# underline style for regular colors
+UNDERLINE_BLACK='\033[4;30m'
+UNDERLINE_WHITE='\033[4;37m'
+UNDERLINE_RED='\033[4;31m'
+UNDERLINE_GREEN='\033[4;32m'
+UNDERLINE_BLUE='\033[4;34m'
+UNDERLINE_YELLOW='\033[4;33m'
+UNDERLINE_PURPLE='\033[4;35m'
+UNDERLINE_CYAN='\033[4;36m'
 
-# Background
-On_Black='\033[40m'       # Black
-On_Red='\033[41m'         # Red
-On_Green='\033[42m'       # Green
-On_Yellow='\033[43m'      # Yellow
-On_Blue='\033[44m'        # Blue
-On_Purple='\033[45m'      # Purple
-On_Cyan='\033[46m'        # Cyan
-On_White='\033[47m'       # White
+# regular colors as background
+BG_BLACK='\033[40m'
+BG_WHITE='\033[47m'
+BG_RED='\033[41m'
+BG_GREEN='\033[42m'
+BG_BLUE='\033[44m'
+BG_YELLOW='\033[43m'
+BG_PURPLE='\033[45m'
+BG_CYAN='\033[46m'
 
-# High Intensity
-IBlack='\033[0;90m'       # Black
-IRed='\033[0;91m'         # Red
-IGreen='\033[0;92m'       # Green
-IYellow='\033[0;93m'      # Yellow
-IBlue='\033[0;94m'        # Blue
-IPurple='\033[0;95m'      # Purple
-ICyan='\033[0;96m'        # Cyan
-IWhite='\033[0;97m'       # White
+# high intensity/bright colors
+BRIGHT_BLACK='\033[0;90m'
+BRIGHT_WHITE='\033[0;97m'
+BRIGHT_RED='\033[0;91m'
+BRIGHT_GREEN='\033[0;92m'
+BRIGHT_BLUE='\033[0;94m'
+BRIGHT_YELLOW='\033[0;93m'
+BRIGHT_PURPLE='\033[0;95m'
+BRIGHT_CYAN='\033[0;96m'
 
-# Bold High Intensity
-BIBlack='\033[1;90m'      # Black
-BIRed='\033[1;91m'        # Red
-BIGreen='\033[1;92m'      # Green
-BIYellow='\033[1;93m'     # Yellow
-BIBlue='\033[1;94m'       # Blue
-BIPurple='\033[1;95m'     # Purple
-BICyan='\033[1;96m'       # Cyan
-BIWhite='\033[1;97m'      # White
+# bold style for high intensity/bright colors
+BOLD_BRIGHT_BLACK='\033[1;90m'
+BOLD_BRIGHT_WHITE='\033[1;97m'
+BOLD_BRIGHT_RED='\033[1;91m'
+BOLD_BRIGHT_GREEN='\033[1;92m'
+BOLD_BRIGHT_BLUE='\033[1;94m'
+BOLD_BRIGHT_YELLOW='\033[1;93m'
+BOLD_BRIGHT_PURPLE='\033[1;95m'
+BOLD_BRIGHT_CYAN='\033[1;96m'
 
-# High Intensity backgrounds
-On_IBlack='\033[0;100m'   # Black
-On_IRed='\033[0;101m'     # Red
-On_IGreen='\033[0;102m'   # Green
-On_IYellow='\033[0;103m'  # Yellow
-On_IBlue='\033[0;104m'    # Blue
-On_IPurple='\033[0;105m'  # Purple
-On_ICyan='\033[0;106m'    # Cyan
-On_IWhite='\033[0;107m'   # White
+# high intensity/bright colors as background
+BG_BRIGHT_BLACK='\033[0;100m'
+BG_BRIGHT_WHITE='\033[0;107m'
+BG_BRIGHT_RED='\033[0;101m'
+BG_BRIGHT_GREEN='\033[0;102m'
+BG_BRIGHT_BLUE='\033[0;104m'
+BG_BRIGHT_YELLOW='\033[0;103m'
+BG_BRIGHT_PURPLE='\033[0;105m'
+BG_BRIGHT_CYAN='\033[0;106m'
+
+# disable corresponding mode
+set +o allexport
