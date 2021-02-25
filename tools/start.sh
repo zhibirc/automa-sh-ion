@@ -5,13 +5,13 @@
 # ------------------------------
 
 # terminal
-gnome-terminal
+gnome-terminal --full-screen
 
 # browsers
-firefox
-chromium
+nohup firefox &
+nohup chromium &
 
 # IDE
-pstorm
+nohup pstorm &
 
 exit 0
