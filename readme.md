@@ -21,6 +21,7 @@ Automation is a good start point to optimize your day!_
 
 - **tools**: actually, the working utilities
   - **libs**: shared service libraries
+    - [check.env](tools/libs/check.env.sh): perform various system environment checks
     - [check.link](tools/libs/check.link.sh): check network connection status
     - [format](tools/libs/format.sh): independent text formatting methods
     - [json](tools/libs/json.sh): working with JSON format
@@ -72,7 +73,7 @@ and type the _most relevant_ keyword. I hope that something will be found.
 [git](tools/clone.repos.sh) | [toggl](tools/report.sh) | [api](tools/report.sh) | [telegram-bot](templates/telegram.bot.py) | [workflow](tools/start.sh) |
 [github](tools/clone.repos.sh) | [github-api](tools/clone.repos.sh) | [web-security](tools/breakx) | [brute-force](tools/breakx) | [sms](tools/hack.alarm.sh) |
 [scale](tools/scaler.sh) | [resize](tools/scaler.sh) | [ImageMagick](tools/scaler.sh) | [find](tools/finder.sh) | [MAC](tools/spies/device.by.mac.sh) |
-[scan](tools/spies/device.by.mac.sh) |
+[scan](tools/spies/device.by.mac.sh) | [bash-version](tools/libs/check.env.sh) | [environment](tools/libs/check.env.sh) |
 
 
 ## Short Cheatsheet [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)]()
