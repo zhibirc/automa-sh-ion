@@ -59,7 +59,7 @@ Sometimes you want to run task regularly to do some repetitive work (reporting, 
 ```shell script
 # if "cron" is not installed; use "yum" or another appropriate package manager for your GNU/Linux distro
 sudo apt update
-sudo apt install cron
+sudo apt install cron -y
 sudo systemctl enable cron
 
 # put "0 10 * * 1-5 report.sh" to send reports at 10 a.m. on every day-of-week from Monday through Friday
@@ -73,7 +73,7 @@ and type the _most relevant_ keyword. I hope that something will be found.
 [git](tools/clone.repos.sh) | [toggl](tools/report.sh) | [api](tools/report.sh) | [telegram-bot](templates/telegram.bot.py) | [workflow](tools/start.sh) |
 [github](tools/clone.repos.sh) | [github-api](tools/clone.repos.sh) | [web-security](tools/breakx) | [brute-force](tools/breakx) | [sms](tools/hack.alarm.sh) |
 [scale](tools/scaler.sh) | [resize](tools/scaler.sh) | [ImageMagick](tools/scaler.sh) | [find](tools/finder.sh) | [MAC](tools/spies/device.by.mac.sh) |
-[scan](tools/spies/device.by.mac.sh) | [bash-version](tools/libs/check.env.sh) | [environment](tools/libs/check.env.sh) |
+[scan](tools/spies/device.by.mac.sh) | [bash-version](tools/libs/check.env.sh) | [environment](tools/libs/check.env.sh) | [feh](tools/healthspy.sh) |
 
 
 ## Short Cheatsheet [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)]()
