@@ -1,13 +1,14 @@
 #!/bin/bash -e
 # ------------------------------
-# Resize/scale of image/audio/video/text files.
+# Resize/scale of image/audio/video/text files. Use FFmpeg and ImageMagick tools suite.
 # Written by Yaroslav Surilov aka zhibirc <zhibirc.echo@gmail.com> on 2021-03
 # ------------------------------
 
 # for debug
-set -o xtrace -o nounset -o pipefail
+#set -o xtrace -o nounset -o pipefail
 
 readonly BASE_DIR="$(dirname "$0")"
+readonly VERSION='1.0.0'
 
 if [[ -f "$BASE_DIR/libs/styles.sh" ]]; then
     # shellcheck disable=SC1090
@@ -22,17 +23,37 @@ fi
 
 
 help () {
-    echo -e "${RED}$0${STYLE_RESET}"
+    echo -e "${RED}${1:-Scaler, the general information}${STYLE_RESET}\n"
 
     cat <<EOF
-Usage examples:
+Available options:
 
 -h, --help
 Print this Help and exit.
--v, --version
+
+-V, --version
 Print software version and exit.
+
 -d, --debug
-Enable debugging mode with a lot of execution details.
+Use debugging mode with a lot of execution details. Can be combined with other modes.
+
+-i, --images
+Use images scaling or "images" mode.
+
+-a, --audio
+Use "audio" mode for reducing bitrate or track duration.
+
+-v, --video
+Use "video" mode for scaling videos.
+
+-s, --source
+Source path for input files, required.
+
+-o, --output
+Destination path for output files, use directory of origin files by default.
+
+-r, --resolution
+Shorthand for convenience: SD (640x480), HD (1280x720), FullHD (1920x1080), UHD or 4K (3840x2160). Case insensitive.
 
 EOF
 }
@@ -41,13 +62,17 @@ if [[ -z "$*" ]]; then
     help 'Too few arguments\n' && exit 1
 fi
 
-while getopts 'hiavt' $option; do
-    case "$option" in
-        i) echo 'images';;
-        a) echo 'audio';;
+declare -a POSITIONAL=()
+
+while [[ "$#" -gt 0 ]]; do
+    key="$1"
+
+    case "$key" in
+        -h|--help)    help && exit 0;;
+        -V|--version) echo -e "${GREEN}$VERSION${STYLE_RESET}" && exit 0;;
         v) echo 'video';;
         t) echo 'text';;
-        *) echo "invalid option: $option";;
+        *) echo "invalid option: $key";;
     esac
 done
 
