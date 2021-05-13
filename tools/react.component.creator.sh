@@ -1,4 +1,10 @@
 #!/bin/zsh
+# ------------------------------
+# Boilerplate creator for React components.
+#
+# React components are pretty isolated and elegant, but have some boilerplate common set of instructions.
+# This tool creates a relatively widely used component structure, at least trying.
+# ------------------------------
 
 unsetopt MULTIOS
 
