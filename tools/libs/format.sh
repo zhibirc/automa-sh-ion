@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Echo a given unicode character N times.
 # Usage: print_utf_characters [unicode number] [N times]

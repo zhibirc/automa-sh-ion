@@ -1,9 +1,9 @@
-#!/bin/bash -e
+#!/usr/bin/env bash
 # ------------------------------
 # We all are hard-working and very busy all the time. But health is required attention too! This tool tries to help us with this.
 # TODO: add further explanation
 # Written by Yaroslav Surilov aka zhibirc <zhibirc.echo@gmail.com> on 2021-03
-# ------------------------------
+########################################################################################################################
 
 # for debug
 set -o xtrace -o nounset -o pipefail

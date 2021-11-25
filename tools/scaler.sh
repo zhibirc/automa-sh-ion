@@ -1,8 +1,8 @@
-#!/bin/bash -e
-# ------------------------------
+#!/usr/bin/env bash
+#
 # Resize/scale of image/audio/video/text files. Use FFmpeg and ImageMagick tools suite.
 # Written by Yaroslav Surilov aka zhibirc <zhibirc.echo@gmail.com> on 2021-03
-# ------------------------------
+########################################################################################################################
 
 # for debug
 #set -o xtrace -o nounset -o pipefail

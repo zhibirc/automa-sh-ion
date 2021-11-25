@@ -1,7 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # ------------------------------
 # Report about daily activities.
-# Author: me :)
 #
 # Specials:
 # TOGGL_API_TOKEN - see https://github.com/toggl/toggl_api_docs#api-token
@@ -9,7 +8,7 @@
 # TG_%abbreviated description%_BOT_TOKEN - Telegram Bot TOKEN (see https://core.telegram.org/bots#creating-a-new-bot)
 # To obtain the Group ID for below constant just use "curl "https://api.telegram.org/bot<bot_token>/getUpdates" after adding to chat and analyze the output.
 # TG_%abbreviated description from above%_CHAT_ID - Telegram Group/Chat ID
-# ------------------------------
+########################################################################################################################
 
 if [[ -f "$HOME/.config/automa-sh-ion/.config" ]]; then
     # shellcheck disable=SC1090

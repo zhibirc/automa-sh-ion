@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 if [[ ( $1 == "" ) || ( $2 == "" ) ]]; then
     echo "Proper format: $0 <IP of victim server> <number of sessions>"

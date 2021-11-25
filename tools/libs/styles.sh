@@ -1,7 +1,7 @@
-#!/bin/bash -e
+#!/usr/bin/env bash
 # ------------------------------
 # Basic TTY colors and styles.
-# ------------------------------
+########################################################################################################################
 
 # mark all for export to the environment of subshells
 set -o allexport

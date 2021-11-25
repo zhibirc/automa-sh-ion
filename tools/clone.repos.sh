@@ -1,14 +1,13 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # ------------------------------
 # Clone projects you need from GitHub.
-# Author: me :)
 #
 # Specials:
 # GITHUB_USERNAME - see https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/github-glossary#username
 # GITHUB_API_TOKEN - see:
 #     https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/github-glossary#access-token
 #     https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token
-# ------------------------------
+########################################################################################################################
 
 if [[ -f "$HOME/.config/automa-sh-ion/.config" ]]; then
     # shellcheck disable=SC1090

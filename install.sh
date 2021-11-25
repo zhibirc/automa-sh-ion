@@ -1,6 +1,14 @@
-#!/bin/bash -e
+#!/usr/bin/env bash
+#
+# Selective installer for presented tools.
+#
+########################################################################################################################
 
-cd "$(dirname "$0")"
+[[ ! -d "$HOME/bin/" ]] && mkdir "$HOME/bin/"
+PATH=${PATH}:$HOME/bin/
+export PATH
 
 # desired mode of installed files
 readonly MODE=0755
+
+

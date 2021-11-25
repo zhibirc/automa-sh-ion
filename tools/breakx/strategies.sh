@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # ------------------------------
 # ABOUT:
 # In reality, there is no silver bullet for cracking all security implementations.
@@ -7,7 +7,7 @@
 #
 # AUTHOR:
 # @zhibirc
-# ------------------------------
+########################################################################################################################
 
 declare -i MIN_RANDOM_LENGTH=1
 declare -a PORT_SCAN_LIST=(21 22 23 25 53 80 110 139 162 389 443 445 512 513 514 993 1433 1521 3306 3389 5432 5900 5901 8000 8080 6667)

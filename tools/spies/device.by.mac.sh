@@ -1,8 +1,7 @@
-#!/bin/bash -e
+#!/usr/bin/env bash
 # ------------------------------
 # Scan target environment and find a network device by given MAC address.
-# Author: me :)
-# ------------------------------
+########################################################################################################################
 
 # for debug
 set -o xtrace

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # ------------------------------
 # ABOUT:
 # Lightweight brute-force for access to not-so-important inner services.
@@ -14,7 +14,7 @@
 #
 # AUTHOR:
 # @zhibirc
-# ------------------------------
+########################################################################################################################
 
 if [[ -f "$HOME/.config/automa-sh-ion/.config" ]]; then
     # shellcheck disable=SC1090

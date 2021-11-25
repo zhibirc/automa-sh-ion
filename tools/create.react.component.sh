@@ -1,12 +1,10 @@
-#!/bin/zsh
+#!/usr/bin/env bash
 # ------------------------------
 # Boilerplate creator for React components.
 #
 # React components are pretty isolated and elegant, but have some boilerplate common set of instructions.
 # This tool creates a relatively widely used component structure, at least trying.
-# ------------------------------
-
-unsetopt MULTIOS
+########################################################################################################################
 
 readonly COMPONENTS_DIR='components'
 readonly CURRENT_DIR="$(basename "$(pwd)")"
@@ -31,9 +29,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
-import styles from './$COMPONENT_NAME.module.scss'
+// Styles
+import styles from './$COMPONENT_NAME.module.scss';
 
-export function $COMPONENT_NAME ( props ) {}
+export function $COMPONENT_NAME ({ className }) {
+  const rootStyles = clsx(styles.root, className);
+
+  return (
+    <div className={rootStyles}>
+      {/* TODO: implement */}
+    </div>
+  );
+}
 
 $COMPONENT_NAME.propTypes = {};
 EOF
@@ -44,7 +51,7 @@ touch "$file_name"
 cat > ./"$file_name" <<EOF
 @import '../../styles/variables';
 
-.body {}
+.root {}
 EOF
 
 exit 0

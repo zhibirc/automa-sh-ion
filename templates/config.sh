@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Template for configuration options used in tools.
 
 CLI_TOOLS_PATH="Soft/CLI/tools"

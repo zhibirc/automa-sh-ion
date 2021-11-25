@@ -1,7 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # ------------------------------
 # Backup and store encrypted backup in safe place.
-# Author: me :)
 #
 # Generally, there are two approaches to backup process: full backup of all targets each time and incremental of some sort.
 # When the amount (and "volume") of targets is relatively small may be it's simpler to just backup all targets and store, for example,
@@ -11,7 +10,7 @@
 # BACKUP_STORE - where backup should be stored
 #
 # Example: ./backup.sh <target_1> <target_2>
-# ------------------------------
+########################################################################################################################
 
 if [[ -f "$HOME/.config/automa-sh-ion/.config" ]]; then
     # shellcheck disable=SC1090

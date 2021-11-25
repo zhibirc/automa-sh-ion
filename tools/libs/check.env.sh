@@ -1,8 +1,8 @@
-#!/bin/bash -e
+#!/usr/bin/env bash
 # ------------------------------
 # Set of common system environment checks. Usually required as preparation for further work.
 # Written by Yaroslav Surilov aka zhibirc <zhibirc.echo@gmail.com> on 2021-03
-# ------------------------------
+########################################################################################################################
 
 # for debug
 set -o xtrace -o nounset -o pipefail
