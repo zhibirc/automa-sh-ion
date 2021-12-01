@@ -8,7 +8,7 @@ readonly URL="$1"
 [[ -z "$URL" ]] && printf %s\\n 'URL is absent, please specify it as an argument.' && exit 1
 
 printf %s\\n '---------- CURL ----------'
-curl -kso /dev/null "$URL" -w "==============\n\n
+curl -kso /dev/null "$URL" -w "
 | DNSLookup: %{time_namelookup}\n
 | Connect: %{time_connect}\n
 | AppConnect: %{time_appconnect}\n
@@ -18,13 +18,16 @@ curl -kso /dev/null "$URL" -w "==============\n\n
 | Size: %{size_download}\n
 | HTTPCode=%{http_code}\n\n"
 
-printf %s\\n '---------- TRACEROUTE ----------'
+printf %b\\n\\n "\n---------- TRACEROUTE ----------"
 traceroute -v -m 12 "$URL"
 
-printf %s\\n '---------- PING ----------'
+printf %b\\n\\n "\n---------- PING ----------"
 ping -v -t 4 "$URL"
 
-printf %s\\n '---------- NMAP ----------'
-nmap -vv -T4 "$URL"
+printf %b\\n\\n "\n---------- NMAP ----------"
+nmap -vv -T4 -p 22,80,443 --reason "$URL"
+
+printf %b\\n\\n "\n---------- DIG ----------"
+dig "$URL" any
 
 exit 0
