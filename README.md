@@ -5,7 +5,7 @@ Automation is a good start point to optimize your day!_
 
 ---
 <a href="https://www.gnu.org/software/bash/" target="_blank"><img src="https://img.shields.io/badge/Lang-Bash%204.4+-blue.svg"></a>
-[![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](license.md)
+[![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](LICENSE.md)
 [![Maintenance](https://img.shields.io/maintenance/yes/2021.svg?style=flat-square)]()
 [![Platform](https://img.shields.io/badge/OS-GNU%2FLinux-yellowgreen.svg?style=flat-square)]()
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-blue.svg)]()
