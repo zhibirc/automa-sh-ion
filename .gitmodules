@@ -1,0 +1,3 @@
+[submodule "tools/awsam"]
+	path = tools/awsam
+	url = https://github.com/zhibirc/awsam.git
