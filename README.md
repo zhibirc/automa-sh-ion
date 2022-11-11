@@ -6,14 +6,17 @@ Automation is a good start point to optimize your day!_
 ---
 <a href="https://www.gnu.org/software/bash/" target="_blank"><img src="https://img.shields.io/badge/Lang-Bash%204.4+-blue.svg"></a>
 [![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](LICENSE.md)
-[![Maintenance](https://img.shields.io/maintenance/yes/2021.svg?style=flat-square)]()
+[![Maintenance](https://img.shields.io/maintenance/yes/2022.svg?style=flat-square)]()
 [![Platform](https://img.shields.io/badge/OS-GNU%2FLinux-yellowgreen.svg?style=flat-square)]()
+[![Platform](https://img.shields.io/badge/macOS-yellowgreen.svg?style=flat-square)]()
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-blue.svg)]()
 [![HitCount](http://hits.dwyl.com/zhibirc/automa-sh-ion.svg)](http://hits.dwyl.com/zhibirc/automa-sh-ion)
 [![CI main dispatcher](https://github.com/zhibirc/automa-sh-ion/actions/workflows/main.yml/badge.svg)](https://github.com/zhibirc/automa-sh-ion/actions/workflows/main.yml)
 ---
 
 ## Table of contents
+
+- **aliases**: macros-like small pieces of daily used routine logic under the short names
 
 - **templates**: not ready-to-use instruments, but structural or implementation examples of some kind
   - [bot](templates/telegram.bot.py): Telegram Bot common implementation which use [pyTelegramBotAPI](https://pypi.org/project/pyTelegramBotAPI/)
@@ -74,7 +77,7 @@ and type the _most relevant_ keyword. I hope that something will be found.
 [github](tools/clone.repos.sh) | [github-api](tools/clone.repos.sh) | [web-security](tools/breakx) | [brute-force](tools/breakx) | [sms](tools/hack.alarm.sh) |
 [scale](tools/scaler.sh) | [resize](tools/scaler.sh) | [ImageMagick](tools/scaler.sh) | [find](tools/finder.sh) | [MAC](tools/spies/device.by.mac.sh) |
 [scan](tools/spies/device.by.mac.sh) | [bash-version](tools/libs/check.env.sh) | [environment](tools/libs/check.env.sh) | [feh](tools/healthspy.sh) | [ffmpeg](tools/scaler.sh) |
-[react](tools/create.react.component.sh) | [scan](tools/net.scan.sh) | [network-scan](tools/net.scan.sh)
+[react](tools/create.react.component.sh) | [scan](tools/net.scan.sh) | [network-scan](tools/net.scan.sh) | [productivity](aliases/)
 
 
 ## Short Cheatsheet [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)]()
