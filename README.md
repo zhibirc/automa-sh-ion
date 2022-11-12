@@ -77,8 +77,8 @@ and type the _most relevant_ keyword. I hope that something will be found.
 [github](tools/clone.repos.sh) | [github-api](tools/clone.repos.sh) | [web-security](tools/breakx) | [brute-force](tools/breakx) | [sms](tools/hack.alarm.sh) |
 [scale](tools/scaler.sh) | [resize](tools/scaler.sh) | [ImageMagick](tools/scaler.sh) | [find](tools/finder.sh) | [MAC](tools/spies/device.by.mac.sh) |
 [scan](tools/spies/device.by.mac.sh) | [bash-version](tools/libs/check.env.sh) | [environment](tools/libs/check.env.sh) | [feh](tools/healthspy.sh) | [ffmpeg](tools/scaler.sh) |
-[react](tools/create.react.component.sh) | [scan](tools/net.scan.sh) | [network-scan](tools/net.scan.sh) | [productivity](aliases/)
-
+[react](tools/create.react.component.sh) | [scan](tools/net.scan.sh) | [network-scan](tools/net.scan.sh) | [productivity](aliases/) | [AWS Elastic Beanstalk](tools/aws-eb-vars.js) |
+[Okta API](tools/okta-fix-user-locale.py)
 
 ## Short Cheatsheet [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)]()
 
