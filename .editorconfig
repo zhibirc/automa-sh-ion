@@ -1,6 +1,7 @@
 # top-most config file
 root = true
 
+# common settings
 [*]
 end_of_line = lf
 insert_final_newline = true
@@ -9,5 +10,14 @@ indent_size = 4
 charset = utf-8
 trim_trailing_whitespace = true
 
-[makefile]
+# YAML Files
+[*.{yml,yaml}]
+indent_size = 2
+
+# Makefiles
+[Makefile]
 indent_style = tab
+
+# Markdown Files
+[*.{md,mdx}]
+trim_trailing_whitespace = false
