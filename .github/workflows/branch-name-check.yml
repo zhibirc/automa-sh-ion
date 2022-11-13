@@ -1,4 +1,4 @@
-name: Branch name validation
+name: Branch name check
 
 on: [ push, pull_request ]
 
@@ -13,6 +13,6 @@ jobs:
           regex: '^(?:feature|fix)(?:-\d{1,5})?(?:-[a-z]+)+$'
           allowed_prefixes: 'feature,fix'
           ignore: master,develop
-          min_length: 8
+          min_length: 9
           max_length: 34
 

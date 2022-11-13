@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Git
 alias gac='git add . && git commit -m '
 

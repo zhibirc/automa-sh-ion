@@ -11,7 +11,8 @@ Automation is a good start point to optimize your day!_
 [![Platform](https://img.shields.io/badge/macOS-yellowgreen.svg?style=flat-square)]()
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-blue.svg)]()
 [![HitCount](http://hits.dwyl.com/zhibirc/automa-sh-ion.svg)](http://hits.dwyl.com/zhibirc/automa-sh-ion)
-[![CI main dispatcher](https://github.com/zhibirc/automa-sh-ion/actions/workflows/main.yml/badge.svg)](https://github.com/zhibirc/automa-sh-ion/actions/workflows/main.yml)
+[![ShellCheck](https://github.com/zhibirc/automa-sh-ion/actions/workflows/shellcheck.yml/badge.svg)](https://github.com/zhibirc/automa-sh-ion/actions/workflows/shellcheck.yml)
+[![Pylint](https://github.com/zhibirc/automa-sh-ion/actions/workflows/pylint.yml/badge.svg)](https://github.com/zhibirc/automa-sh-ion/actions/workflows/pylint.yml)
 ---
 
 ## Table of contents

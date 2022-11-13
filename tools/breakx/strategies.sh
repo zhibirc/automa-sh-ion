@@ -23,6 +23,7 @@ function generate_random () {
 
 function auth () {
     #local
+    true
 }
 
 
